@@ -1,5 +1,7 @@
 # BlazorTestIPApp
 
+Le code côté Controller :
+
 ```
 public Results<Ok<string>, ProblemHttpResult> GetClientIPv4()
 {
@@ -18,7 +20,7 @@ public Results<Ok<string>, ProblemHttpResult> GetClientIPv4()
 }
 ```
 
-Avec au Startup.cs 
+Avec au Startup.cs :
 
 ```
 app.UseForwardedHeaders(new ForwardedHeadersOptions
