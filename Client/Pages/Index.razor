@@ -1,0 +1,25 @@
+﻿@page "/"
+@using System.Net
+
+<h1>Hello, world!</h1>
+
+<p>IP Address received by server is @_clientIPv4</p>
+<button @onclick="@(async () => await CallServerAsync())">Call Server</button>
+
+
+@code {
+
+  [Inject]
+  public IHttpClientFactory? HttpClientFactory { get; set; }
+
+  private string _clientIPv4 = string.Empty;
+
+  private async Task CallServerAsync()
+  {
+    if (HttpClientFactory is null)
+      return;
+    
+    using HttpClient httpClient = HttpClientFactory.CreateClient();
+    _clientIPv4 = await httpClient.GetFromJsonAsync<string>(string.Empty) ?? string.Empty;
+  }
+}
